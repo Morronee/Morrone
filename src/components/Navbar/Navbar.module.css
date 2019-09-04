@@ -1,0 +1,28 @@
+.item {
+    color: white;
+    margin-top: 5px; 
+    font-size: 20px;
+    
+    width: 70px;  
+}
+.item a:hover {
+    color: lightgrey;
+}
+.item a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+.item a.active {
+    color: grey;
+}
+
+.setting {
+    margin-top: 20px;
+}
+
+.nav {
+    grid-area: n;
+    background-color: #0c449c;
+    padding-left: 20px;
+  }

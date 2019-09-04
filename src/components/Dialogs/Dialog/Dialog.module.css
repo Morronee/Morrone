@@ -1,0 +1,25 @@
+.chat_img {
+    height: 25px;
+}
+.dialog {
+    font-style: bold;
+    font-size: 20px;
+    vertical-align: middle;
+    margin: 20px;
+    
+}
+.dialog p {
+    margin-left: 50px;
+}
+.dialog a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+        
+}
+.dialog a.active {
+    color: grey;
+}
+.dialog a:hover {
+    color: lightgrey;
+}

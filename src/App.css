@@ -1,0 +1,25 @@
+.app-wrapper {
+  display: grid;
+
+  grid-gap: 1em;
+
+  width: 1200px;
+  margin: auto;
+
+  grid-template-areas:
+    "h h"
+    "n c";
+
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 2fr 10fr;
+
+
+}
+#logo_vento {
+  height: 60px;
+}
+
+.app-wrapper-content {
+  grid-area: c;
+  background-color: rgb(122, 122, 212);
+}
