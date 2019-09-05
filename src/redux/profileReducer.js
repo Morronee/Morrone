@@ -20,7 +20,8 @@ const profileReducer = (state = initialState, action) => {
 
 
     switch(action.type) {
-        case ADD_POST :
+        case ADD_POST : {
+            debugger;
             const addPostsId = state.profilePage.posts.length + 1
     
             let newPost = {
@@ -28,13 +29,20 @@ const profileReducer = (state = initialState, action) => {
                 message: state.profilePage.newPostText,
                 nick: 'PropsMan'
             }
-            state.profilePage.posts.push(newPost);
-            state.profilePage.newPostText = "";
-            return state;
-       
-        case UPDATE_NEW_POST :
-            state.profilePage.newPostText = action.newText;
-            return state;
+            let stateCopy = {...state};
+            stateCopy.profilePage.posts = [...state.profilePage.posts];
+            stateCopy.profilePage.posts.push(newPost);
+            stateCopy.profilePage.newPostText = '';
+            return stateCopy;
+        }
+        
+        case UPDATE_NEW_POST : {
+            debugger;
+            let stateCopy = {...state};
+            console.log(typeof stateCopy.profilePage);
+            stateCopy.profilePage.newPostText = action.newText;
+            return stateCopy;
+        }
         default :
             return state;
     }
