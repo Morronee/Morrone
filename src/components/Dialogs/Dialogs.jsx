@@ -5,7 +5,6 @@ import Message from './Message/Message';
 import { addMessageInStateActionCreate, addMessageInDialogActionCreate } from '../../redux/dialogReducer';
 
 const Dialogs = (props) => {
-debugger;
     let dialogsEl = props.dialogsPage.dialogsPage.dialogsData.map( d => <Dialog nickname={d.nickname} id={d.id} /> );
     let messageEl = props.dialogsPage.dialogsPage.messagesData.map( m => <Message textMessage={m.message} id={m.id} />);
     
@@ -23,7 +22,6 @@ debugger;
         }
     }
 
-        debugger;
         return (
             <div className={s.dialogs}>
                 <div className={s.dialogs_items}>

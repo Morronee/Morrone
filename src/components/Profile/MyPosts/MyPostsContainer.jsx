@@ -32,7 +32,6 @@ import { connect } from 'react-redux'
 // }
 
 const mapStateToProps = (state) => {
-    debugger;
     return {
         profilePage: state.profilePage
     }

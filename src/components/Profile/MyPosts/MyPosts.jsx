@@ -7,7 +7,6 @@ import { addPostInProfileCationCreate, updateNewPostInStateActionCreate } from '
 
 
 const MyPosts = (props) => {
-    debugger;
     let postEl = props.profilePage.profilePage.posts.map(s => <Post message={s.message} nick={s.nick} />);
 
     let newPostElem = React.createRef();
