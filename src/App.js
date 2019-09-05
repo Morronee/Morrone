@@ -10,8 +10,14 @@ import Setting from './components/Setting/Setting';
 import {Route} from "react-router-dom";
 import ContainerDialogs from './components/Dialogs/DialogsContainer';
 
+import { GET, POST } from './api';
 
 const App = (props) => {
+
+  GET('http://frontendo.ru/vova/p.php?vova=pidor&type=get').then(resp => resp.json()).then(resp => {
+      debugger;
+  });
+
   return (
       <div className='app-wrapper'>
         <Header />
