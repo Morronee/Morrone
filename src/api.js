@@ -1,4 +1,5 @@
 export function checkStatus(response) {
+    debugger;
     if (response.status >= 200 && response.status < 300) {
         return response;
     } else {
@@ -11,15 +12,15 @@ export function checkStatus(response) {
 }
 
 function request(method, resource, body = null) {
-    return fetch(resource, {
+    return window.fetch(resource, {
         method,
-        // mode: 'cors',
-        credentials: 'include',
+        mode: 'cors',
+        // credentials: 'include',
         body,
         headers: {
             'Content-Type': 'application/json; charset=utf-8'
         }
-    }).then(checkStatus);
+    }); //.then(checkStatus);
 }
 
 export function GET(resource, params) {
