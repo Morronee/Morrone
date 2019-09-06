@@ -7,21 +7,22 @@ import { addPostInProfileCationCreate, updateNewPostInStateActionCreate } from '
 
 
 const MyPosts = (props) => {
-    let postEl = props.profilePage.profilePage.posts.map(s => <Post message={s.message} nick={s.nick} />);
+    // let postEl = props.profilePage.profilePage.posts.map(s => <Post message={s.message} nick={s.nick} />);
+    let postEl = props.posts.map(s => <Post message={s.message} nick={s.nick} />);
 
     let newPostElem = React.createRef();
 
     let PostChange = () => {
         let text = newPostElem.current.value;
         props.onPostChange(text);
-    }
+    };
 
     let postMessage = () => {
         if (newPostElem.current.value != '') {
             props.onPostMessage()
-            newPostElem.current.value = ''
+            // newPostElem.current.value = ''
         }
-    }
+    };
 
     return (
         <div className={s.posts}>
