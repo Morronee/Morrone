@@ -61,15 +61,15 @@ class Posts extends Component {
 
 		return (
 			<div style={{width: '500px'}}>
-				<button onClick={this.handlers.addRandomPost}>Add random post</button>
+				<button  disabled={fetched === true} onClick={this.handlers.addRandomPost}>Add random post</button>
 				{fetched === true && ' Loading...'}
 
 				<table width="100%">
 					<thead>
 						<tr>
-							<td>id</td>
-							<td>content</td>
-							<td>likes</td>
+							<td><strong>id</strong></td>
+							<td><strong>content</strong></td>
+							<td><strong>likes</strong></td>
 							<td></td>
 						</tr>
 					</thead>
@@ -80,7 +80,7 @@ class Posts extends Component {
 								<td>{content}</td>
 								<td>{likes}</td>
 								<td>
-									<button onClick={this.deletePost.bind(this, id)}>
+									<button disabled={fetched === true} onClick={this.deletePost.bind(this, id)}>
 										delete
 									</button>
 								</td>
