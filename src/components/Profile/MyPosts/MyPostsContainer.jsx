@@ -32,6 +32,7 @@ import { connect } from 'react-redux'
 // }
 
 const mapStateToProps = (state) => {
+    debugger;
     return {
         posts: state.profilePage.profilePage.posts,
         newPostText: state.profilePage.profilePage.newPostText

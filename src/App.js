@@ -20,15 +20,11 @@ const App = (props) => {
         <div className="app-wrapper-content">
 
           <Route path='/profile' render={() => 
-            <Profile 
-              store={props.store} 
-              dispatch={props.dispatch} />}
+            <Profile  />}
               />
 
           <Route path='/dialogs' render={() => 
-            <ContainerDialogs 
-              store={props.store}
-              dispatch={props.dispatch}/>}
+            <ContainerDialogs />}
             />
 
           <Route path='/news' 

@@ -5,9 +5,9 @@ import Message from './Message/Message';
 import { addMessageInStateActionCreate, addMessageInDialogActionCreate } from '../../redux/dialogReducer';
 
 const Dialogs = (props) => {
-debugger;
-    let dialogsEl = props.dialogsPage.dialogsPage.dialogsData.map( d => <Dialog nickname={d.nickname} id={d.id} /> );
-    let messageEl = props.dialogsPage.dialogsPage.messagesData.map( m => <Message textMessage={m.message} id={m.id} />);
+    debugger;
+    let dialogsEl = props.dialogsPage.dialogsData.map( d => <Dialog nickname={d.nickname} key={d.id} id={d.id} /> );
+    let messageEl = props.dialogsPage.messagesData.map( m => <Message textMessage={m.message} key={m.id} id={m.id} />);
     
     let textMessageElem = React.createRef();
     
@@ -23,7 +23,6 @@ debugger;
         }
     }
 
-        debugger;
         return (
             <div className={s.dialogs}>
                 <div className={s.dialogs_items}>
@@ -38,7 +37,7 @@ debugger;
                         placeholder='Напишите сообщение...' 
                         ref={textMessageElem} 
                         onChange={onMessageText}
-                        value={props.dialogsPage.dialogsPage.newMessage} >
+                        value={props.dialogsPage.newMessage} >
                     </textarea>
                     <button className={s.message_send} onClick={onSendMessage}>Отправить</button>
                 </div>
