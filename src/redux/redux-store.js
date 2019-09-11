@@ -3,8 +3,9 @@ import dialogReducer from './dialogReducer';
 import profileReducer from './profileReducer';
 
 let reducers = combineReducers({
-    dialogsPage: dialogReducer,
-    profilePage: profileReducer
+    profilePage: profileReducer,
+    dialogsPage: dialogReducer
+    
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
