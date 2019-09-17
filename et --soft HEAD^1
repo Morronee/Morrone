@@ -1,0 +1,29 @@
+[33mcommit dfde9248d3e5e00a0b55281bebf7557a2beb6a2c[m[33m ([m[1;36mHEAD[m[33m)[m
+Author: Vladimir Kremlev <vkremlev@vento.ru>
+Date:   Tue Sep 17 14:30:45 2019 +0300
+
+    where are props????
+
+[33mcommit ea8d4da4ffac55fd2ddde27c01f7be4a401b2a94[m
+Author: Vladimir Kremlev <vkremlev@vento.ru>
+Date:   Thu Sep 5 17:59:48 2019 +0300
+
+    03 lern react all fix stable version
+
+[33mcommit 22d968cc403f77426948b77f5df83f3b7da44e26[m
+Author: Vladimir Kremlev <vkremlev@vento.ru>
+Date:   Thu Sep 5 17:28:05 2019 +0300
+
+    02 lern react fix myPost
+
+[33mcommit e5d0ad55a598edd2a7f46b3e2ae686aa228d39cb[m
+Author: Vladimir Kremlev <vkremlev@vento.ru>
+Date:   Wed Sep 4 23:54:52 2019 +0300
+
+    fix Redux Store Chrome extension
+
+[33mcommit 2f5fd9a31b70c4e743e2b5f5072ce14c1de6a78a[m
+Author: Vladimir Kremlev <vkremlev@vento.ru>
+Date:   Wed Sep 4 18:09:48 2019 +0300
+
+    project begin rrdx

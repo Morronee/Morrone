@@ -18,6 +18,7 @@ let initialState = {
 
 const profileReducer = (state = initialState, action) => {
 
+    let stateCopy = {...state}
 
     switch(action.type) {
         case ADD_POST : {
@@ -28,6 +29,7 @@ const profileReducer = (state = initialState, action) => {
                 message: state.profilePage.newPostText,
                 nick: 'PropsMan'
             }
+<<<<<<< Updated upstream
             let stateCopy = {
                 ...state,
                 posts: [...state.posts, newPost],
@@ -37,15 +39,23 @@ const profileReducer = (state = initialState, action) => {
             // stateCopy.profilePage.posts = [...state.profilePage.posts];
             // stateCopy.profilePage.posts.push(newPost);
             // stateCopy.profilePage.newPostText = '';
+=======
+            stateCopy.profilePage.posts = [...state.profilePage.posts];
+            stateCopy.profilePage.posts.push(newPost);
+            stateCopy.profilePage.newPostText = '';
+>>>>>>> Stashed changes
             return stateCopy;
         }
         
         case UPDATE_NEW_POST : {
+<<<<<<< Updated upstream
             let stateCopy = {
                 ...state,
                 newPostText: action.newText
 
             };
+=======
+>>>>>>> Stashed changes
             stateCopy.profilePage.newPostText = action.newText;
             return stateCopy;
         }

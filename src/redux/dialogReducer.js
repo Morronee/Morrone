@@ -23,8 +23,11 @@ let initialState = {
 
 const dialogReducer = (state = initialState, action) => {
 
+    let stateCopy = {...state}
+
     switch (action.type) {
 
+<<<<<<< Updated upstream
         case ADD_MESSAGE_IN_STATE: 
             return {
                 ...state,
@@ -39,6 +42,24 @@ const dialogReducer = (state = initialState, action) => {
                 newMessage: '',
                 messagesData: [...state.messagesData, {id: 123, message: textMessage, nick: 'test', author: 'Me'}]
             }
+=======
+        case ADD_MESSAGE_IN_DIALOG: {
+            let newMessage = {
+                id: 123,
+                message: state.dialogsPage.newMessage,
+                nick: 'Me',
+                author: 'Me'
+            }
+            stateCopy.dialogsPage.messagesData = [...state.dialogsPage.messagesData]
+            stateCopy.dialogsPage.messagesData.push(newMessage)
+            stateCopy.dialogsPage.newMessage = ''
+            return stateCopy;
+        }
+
+        case ADD_MESSAGE_IN_STATE: {
+            stateCopy.dialogsPage.newMessage = action.text
+            return stateCopy;
+>>>>>>> Stashed changes
         }
         default:
             return state.dialogsPage;
