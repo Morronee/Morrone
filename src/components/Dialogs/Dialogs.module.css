@@ -7,7 +7,7 @@
 }
 .dialogs_items {
     grid-area: d;
-    background-color: green;
+    /* background-color: green; */
 }
 .mesagges_items {
     grid-area: m;
@@ -41,7 +41,7 @@
     vertical-align: middle;
     white-space: normal;
     text-decoration: none;
-    color: #fff;
+    /* color: #fff; */
     border: 1px solid #4a89dc;
     border-radius: 3px;
     background: #5d9cec;
@@ -49,7 +49,7 @@
 }
 .message_send:hover
 {
-    color: #fff;
+    /* color: #fff; */
     border-color: #4a89dc;
     background-color: #4a89dc;
 }

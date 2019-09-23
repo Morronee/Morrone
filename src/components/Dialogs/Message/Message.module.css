@@ -1,11 +1,4 @@
 .item {
-    border: 4px solid rgb(77, 77, 187);
-    padding: 10px;
-    display: inline-block;
-    border-radius: 10%;
-    margin: 5px;
-}
-.itemBlock {
     margin: 15px;
 }
 

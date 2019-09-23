@@ -5,4 +5,7 @@
 .item {
   background-color: grey;
 }
-
+.posts {
+  color: black;
+  margin: 20px;
+}
