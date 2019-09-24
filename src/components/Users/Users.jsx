@@ -6,16 +6,18 @@ import * as axios from 'axios';
 
 
 class Users extends React.Component {
-    constructor(props) {
-        super(props)
-        axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
-            this.props.setUsers(response.data.items)
-        })
+
+
+    componentDidMount() {
+        alert('New')
+        axios.get('https://social-network.samuraijs.com/api/1.0/users')
+            .then(response => {
+                this.props.setUsers(response.data.items)
+            })
     }
 
 
     render() {
-
         return <div>
             <h1>Users</h1>
             <CardGroup>
