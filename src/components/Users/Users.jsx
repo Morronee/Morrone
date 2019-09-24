@@ -9,8 +9,6 @@ const Users = (props) => {
     if (props.usersPage.users.length === 0) {
         axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
             props.setUsers(response.data.items)
-
-
         })
     }
 
@@ -21,6 +19,7 @@ const Users = (props) => {
         age={u.id}
         follow={props.follow}
         unfollow={props.unfollow}
+        photos={u.photos}
     />)
     return (
         <div>

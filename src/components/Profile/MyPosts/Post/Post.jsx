@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './Post.module.css';
-import { Toast, Card } from 'react-bootstrap';
+import { Badge, Card } from 'react-bootstrap';
 
 const Post = (props) => {
     return (
@@ -17,7 +17,7 @@ const Post = (props) => {
 
         <div className={s.posts}>
             <Card>
-                <Card.Header>{props.nick}</Card.Header>
+                <Card.Header>{props.nick}<Badge variant="secondary">New</Badge></Card.Header>
                 <Card.Body>
                     <blockquote className="blockquote mb-0">
                     <p>
