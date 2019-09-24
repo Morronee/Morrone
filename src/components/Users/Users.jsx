@@ -5,30 +5,31 @@ import { Button, ButtonToolbar, CardGroup } from 'react-bootstrap';
 import * as axios from 'axios';
 
 
-const Users = (props) => {
-    if (props.usersPage.users.length === 0) {
+class Users extends React.Component {
+    constructor(props) {
+        super(props)
         axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
-            props.setUsers(response.data.items)
+            this.props.setUsers(response.data.items)
         })
     }
 
-    let userElem = props.usersPage.users.map(u => <User
-        followed={u.followed}
-        name={u.name}
-        userID={u.id}
-        age={u.id}
-        follow={props.follow}
-        unfollow={props.unfollow}
-        photos={u.photos}
-    />)
-    return (
-        <div>
+
+    render() {
+
+        return <div>
             <h1>Users</h1>
             <CardGroup>
-                {userElem}
+                {this.props.usersPage.users.map(u => <User
+                    followed={u.followed}
+                    name={u.name}
+                    userID={u.id}
+                    age={u.id}
+                    follow={this.props.follow}
+                    unfollow={this.props.unfollow}
+                    photos={u.photos} />)}
             </CardGroup>
         </div>
-    )
+    }
 }
 
 export default Users;
