@@ -3,7 +3,6 @@ import s from './User.module.css'
 import { Button, Card } from 'react-bootstrap'
 
 const User = (props) => {
-    debugger
     let userPhoto = 'https://cdn2.iconfinder.com/data/icons/website-icons/512/User_Avatar-512.png'
     return (
         <div className={s.item}>
@@ -16,7 +15,6 @@ const User = (props) => {
                     </Card.Text>
                     {props.followed ? <Button variant="primary" onClick={ () => {props.follow(props.userID)}}>UNFOLLOW</Button> 
                                     : <Button variant="primary" onClick={ () => {props.unfollow(props.userID)}}>FOLLOW</Button>}
-                    {/* <Button variant="primary">FOLLOW</Button> */}
                 </Card.Body>
             </Card>
         </div>
