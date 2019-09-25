@@ -5,29 +5,6 @@ import Message from './Message/Message';
 import { addMessageInStateActionCreate, addMessageInDialogActionCreate } from '../../redux/dialogReducer';
 import { connect } from 'react-redux';
 
-
-// const ContainerDialogs = (props) => {
-    
-//     let state = props.store.getState()
-    
-//     let messageText = (textEl) => {
-//         props.dispatch(addMessageInStateActionCreate(textEl))
-//     }
-
-//     let sendMessage = () => {
-//         props.dispatch(addMessageInDialogActionCreate());
-//         }
-    
-
-//         return (
-//             <Dialogs 
-//                 messageText={messageText}
-//                 sendMessage={sendMessage}
-//                 dialogsPage={state.dialogsPage}
-//             />
-//         )
-// }
-
 const mapStateToProps = (state) => {
     return {
         dialogsPage: state.dialogsPage

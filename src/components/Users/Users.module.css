@@ -2,3 +2,9 @@ h1 {
     color: white;
     margin-left: 15px;
 }
+.selected {
+    color: darkgrey;
+}
+.pegi {
+    margin-left: 15px;
+}
