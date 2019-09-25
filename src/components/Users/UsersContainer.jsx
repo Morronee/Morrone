@@ -1,38 +1,46 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { followAC, unfollowAC, setUsersAC, setCurrentPageAC, setCountTotalUsersAC } from '../../redux/usersReducer';
+import { followAC, unfollowAC, setUsersAC, setCurrentPageAC, setCountTotalUsersAC, setIsLoadingAC } from '../../redux/usersReducer';
 import Users from './Users';
 import * as axios from 'axios';
+import { Spinner } from 'react-bootstrap';
+import Preloader from '../common/Preloader';
 
 
 class UsersAPIComponent extends React.Component {
 
 
     componentDidMount() {
+        this.props.setLoadingUsers(true)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.usersPage.currentPage}&count=${this.props.usersPage.pageSize}`)
             .then(response => {
+                this.props.setLoadingUsers(false)
                 this.props.setUsers(response.data.items)
                 this.props.setTotalUsers(response.data.totalCount)
             })
     }
 
     onPageChanged = (pageNumber) => {
+        this.props.setLoadingUsers(true)
         this.props.setCurrentPage(pageNumber)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.usersPage.pageSize}`)
             .then(response => {
+                this.props.setLoadingUsers(false)
                 this.props.setUsers(response.data.items)
             })
     }
 
 
     render() {
-        return <Users 
+        return <>
+            {this.props.usersPage.isLoading ? <Preloader /> : null}
+            <Users 
             onPageChanged={this.onPageChanged}
             usersPage={this.props.usersPage}
             follow={this.props.follow}
             unfollow={this.props.unfollow}
             />
-            
+        </>    
     }
 }
 
@@ -40,10 +48,7 @@ class UsersAPIComponent extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        usersPage: state.usersPage,
-        // pageSize: state.usersPage.pageSize,
-        // totalUsersCount: state.usersPage.totalUsersCount,
-        // currentPage: state.usersPage.currentPage
+        usersPage: state.usersPage
     }
 }
 
@@ -63,6 +68,9 @@ const dispatchToProps = (dispatch) => {
         },
         setTotalUsers: (totalUsers) => {
             dispatch(setCountTotalUsersAC(totalUsers))
+        },
+        setLoadingUsers: (loading) => {
+            dispatch(setIsLoadingAC(loading))
         }
     }
 }
