@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './Users.module.css';
 import User from './User/User';
-import { Button, ButtonGroup, CardGroup } from 'react-bootstrap';
+import { Button, ButtonGroup, CardGroup, Pagination } from 'react-bootstrap';
 import * as axios from 'axios';
 
 
@@ -30,9 +30,12 @@ let Users = (props) => {
             <div>
             </div>
             <div className={s.pegi}>
-                <ButtonGroup className="mr-2" aria-label="First group">
+                {/* <ButtonGroup className="mr-2" aria-label="First group">
                     {pages.map(p => <Button onClick={(e) => { props.onPageChanged(p) }} className={props.usersPage.currentPage === p && s.selected}>{p}</Button>)}
-                </ButtonGroup>
+                </ButtonGroup> */}
+                <Pagination>
+                        {pages.map(p => <Pagination.Item onClick={(e) => { props.onPageChanged(p) }} active={props.usersPage.currentPage === p && true}>{p}</Pagination.Item>)}
+                </Pagination>
             </div>
             <CardGroup>
                 {userElem}

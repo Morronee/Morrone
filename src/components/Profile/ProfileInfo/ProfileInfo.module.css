@@ -1,7 +1,16 @@
-.profileInfo img {
+.profileInfo_bg_img {
     width: 100%;
 }
 .descriptionBlock {
-    background-color: lightgrey;
+    /* background-color: lightgrey; */
     padding: 10px;
+    height: 100px;
+}
+.avatarUser img {
+    position: absolute;
+    width: 150px;
+    top: 350px;
+}
+.avatarUser {
+    margin: 15px;
 }

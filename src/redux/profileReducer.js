@@ -1,5 +1,6 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST = 'UPDATE-NEW-POST';
+const SET_PROFILE = 'SET_PROFILE'
 
 let initialState = {
     profilePage: {
@@ -11,7 +12,8 @@ let initialState = {
             { id: 5, message: 'Test props from state 2', nick: 'Log' }
         ],
         newPostText: ''
-    }
+    },
+    profiles: null 
 }
 
 
@@ -43,11 +45,20 @@ const profileReducer = (state = initialState, action) => {
             stateCopy.profilePage.newPostText = action.newText;
             return stateCopy;
         }
+        
+        case SET_PROFILE: {
+            return {
+                ...state, profiles: action.profiles
+            }
+        }
+
         default :
             return state;
     }
 }
 export const updateNewPostInStateActionCreate = (text) => ({ type: 'UPDATE-NEW-POST', newText: text })
 export const addPostInProfileCationCreate = () => ({ type: 'ADD-POST' })
+export const setProfiles = (profiles) => ({ type: SET_PROFILE, profiles })
+
 
 export default profileReducer;
