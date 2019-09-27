@@ -38,7 +38,7 @@ class UsersAPIComponent extends React.Component {
             onPageChanged={this.onPageChanged}
             usersPage={this.props.usersPage}
             follow={this.props.follow}
-            unfollow={this.props.unfollow}
+            unfollow={this.props.unfollow} 
             />
         </>    
     }
