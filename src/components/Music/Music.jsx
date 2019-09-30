@@ -3,7 +3,8 @@ import React from 'react';
 
 const Music = () => {
     return (
-        <div>Music</div>
+        <div><img src="/public/img/social/facebook-4-240.png" alt=""/></div>
+        
     )
 }
 
