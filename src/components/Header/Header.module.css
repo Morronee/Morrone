@@ -6,3 +6,20 @@
   margin: 5px 65px;
   height: 50px;
 }
+.loginAuth {
+  float: right;
+  margin-top: 12px;
+}
+.loginAuth a {
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  margin-right: 15px;
+}
+.loginAuth a:hover {
+  color: lightgrey;
+}
+.loginAuth h4 {
+  margin-right: 15px;
+  color: white;
+}

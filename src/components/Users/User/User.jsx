@@ -9,7 +9,7 @@ const User = (props) => {
         <div className={s.item}>
             <Card style={{ width: '18rem' }}>
                 <NavLink to={`/profile/${props.userID}`}>
-                    <Card.Img variant="top" src={props.photos.small != null ? props.photos.small : userPhoto} />
+                    <Card.Img variant="top" src={props.photos.large != null ? props.photos.large : userPhoto} />
                 </NavLink>
                 <Card.Body>
                     <Card.Title>{props.name}</Card.Title>

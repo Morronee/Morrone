@@ -8,7 +8,9 @@ const Profile = (props) => {
     
     return (
     <div className={s.content}>
-        <ProfileInfo profiles={props.profiles} />
+        <ProfileInfo profiles={props.profiles}
+            follow={props.follow}
+            unfollow={props.unfollow} />
         <ContainerMyPosts />
     </div>
     )
