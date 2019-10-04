@@ -5,6 +5,7 @@ import Users from './Users';
 import * as axios from 'axios';
 import { Spinner } from 'react-bootstrap';
 import Preloader from '../common/Preloader';
+import {usersAPI} from './../../api.js' 
 
 
 class UsersAPIComponent extends React.Component {
@@ -12,25 +13,19 @@ class UsersAPIComponent extends React.Component {
 
     componentDidMount() {
         this.props.setIsLoading(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.usersPage.currentPage}&count=${this.props.usersPage.pageSize}`, {
-            withCredentials: true
-        })
-            .then(response => {
+        usersAPI.getUsers(this.props.usersPage.currentPage, this.props.usersPage.pageSize).then(response => {
                 this.props.setIsLoading(false)
-                this.props.setUsers(response.data.items)
-                this.props.setCountTotalUsers(response.data.totalCount)
+                this.props.setUsers(response.items)
+                this.props.setCountTotalUsers(response.totalCount)
             })
     }
 
     onPageChanged = (pageNumber) => {
         this.props.setIsLoading(true)
         this.props.setCurrentPage(pageNumber)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.usersPage.pageSize}`, {
-            withCredentials: true
-        })
-            .then(response => {
+        usersAPI.getUsers(pageNumber, this.props.usersPage.pageSize).then(response => {
                 this.props.setIsLoading(false)
-                this.props.setUsers(response.data.items)
+                this.props.setUsers(response.items)
             })
     }
 
@@ -38,13 +33,13 @@ class UsersAPIComponent extends React.Component {
     render() {
         return <>
             {this.props.usersPage.isLoading ? <Preloader /> : null}
-            <Users 
-            onPageChanged={this.onPageChanged}
-            usersPage={this.props.usersPage}
-            follow={this.props.follow}
-            unfollow={this.props.unfollow} 
+            <Users
+                onPageChanged={this.onPageChanged}
+                usersPage={this.props.usersPage}
+                follow={this.props.follow}
+                unfollow={this.props.unfollow}
             />
-        </>    
+        </>
     }
 }
 
@@ -80,7 +75,7 @@ const mapStateToProps = (state) => {
 // }
 
 
-const UsersContainer = connect(mapStateToProps, 
-    { follow, unfollow, setUsers, setCurrentPage, setCountTotalUsers, setIsLoading}) (UsersAPIComponent)
+const UsersContainer = connect(mapStateToProps,
+    { follow, unfollow, setUsers, setCurrentPage, setCountTotalUsers, setIsLoading })(UsersAPIComponent)
 
 export default UsersContainer;

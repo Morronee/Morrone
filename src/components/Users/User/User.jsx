@@ -2,7 +2,8 @@ import React from 'react'
 import s from './User.module.css'
 import { Button, Card } from 'react-bootstrap'
 import { NavLink } from "react-router-dom";
-import * as axios from 'axios'
+import * as axios from 'axios';
+import {followedAPI} from './../../../api'
 
 const User = (props) => {
     let userPhoto = 'https://cdn2.iconfinder.com/data/icons/website-icons/512/User_Avatar-512.png'
@@ -17,26 +18,20 @@ const User = (props) => {
                     <Card.Text>
                         ID: {props.age}
                     </Card.Text>
-                    
+
                     {props.followed
                         ? <Button variant="primary" onClick={() => {
-                            axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${props.userID}`, { 
-                                withCredentials: true,
-                                headers: {'API-KEY': '56cfcec3-c475-47ed-bea2-f54ed88717c1'} 
-                            })
-                            .then(response => {
-                                if (response.data.resultCode === 0) {
-                                    props.unfollow(props.userID)
-                                }
-                            })
+                           followedAPI.unfollow(props.userID)
+                                .then(response => {
+                                    if (response.resultCode === 0) {
+                                        props.unfollow(props.userID)
+                                    }
+                                })
                         }}>UNFOLLOW</Button>
                         : <Button variant="primary" onClick={() => {
-                            axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${props.userID}`, {}, { 
-                                withCredentials: true,
-                                headers: {'API-KEY': '56cfcec3-c475-47ed-bea2-f54ed88717c1'} 
-                            })
+                            followedAPI.follow(props.userID)
                                 .then(response => {
-                                    if (response.data.resultCode === 0) {
+                                    if (response.resultCode === 0) {
                                         props.follow(props.userID)
                                     }
                                 })
