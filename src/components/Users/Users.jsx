@@ -8,6 +8,8 @@ import * as axios from 'axios';
 let Users = (props) => {
 
     let userElem = props.usersPage.users.map(u =>
+                
+
         <User
             followed={u.followed}
             name={u.name}
@@ -15,7 +17,9 @@ let Users = (props) => {
             age={u.id}
             follow={props.follow}
             unfollow={props.unfollow}
-            photos={u.photos} />)
+            photos={u.photos}
+            setIsDisabled={props.setIsDisabled}
+            isDisabled={props.usersPage.isDisabled} />)
 
     let pagesCount = Math.ceil(props.usersPage.totalUsersCount / props.usersPage.pageSize)
 

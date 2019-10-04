@@ -4,13 +4,15 @@ const SET_USERS = 'SET_USERS'
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 const SET_TOTAL_PAGE = 'SET_TOTAL_PAGE'
 const TOGGLE_IS_LOADING = 'TOGGLE_IS_LOADING'
+const TOGGLE_IS_DISABLED = 'TOGGLE_IS_DISABLED'
 
 let initialState = {
     users: [],
     pageSize: 45,
     totalUsersCount: 0,
     currentPage: 1,
-    isLoading: false
+    isLoading: true,
+    isDisabled: []
 }
 
 
@@ -68,8 +70,16 @@ const usersReducer = (state = initialState, action) => {
                                     ...state, isLoading: action.loading
                                 }
 
-                                default:
-                                    return state;
+                                case TOGGLE_IS_DISABLED:
+                                return { 
+                                        ...state, 
+                                        isDisabled: action.loading
+                                            ? [...state.isDisabled, action.userID]
+                                            : state.isDisabled.filter(id => id != action.userID)
+                                    }
+
+                                    default:
+                                        return state;
     }
 }
 export const follow = (userID) => ({
@@ -95,6 +105,11 @@ export const setCountTotalUsers = (totalUsers) => ({
 export const setIsLoading = (loading) => ({
     type: TOGGLE_IS_LOADING,
     loading
+})
+export const setIsDisabled = (loading, userID) => ({
+    type: TOGGLE_IS_DISABLED,
+    loading,
+    userID
 })
 
 

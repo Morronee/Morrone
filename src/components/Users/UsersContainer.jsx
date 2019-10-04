@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { follow, unfollow, setUsers, setCurrentPage, setCountTotalUsers, setIsLoading } from '../../redux/usersReducer';
+import { follow, unfollow, setUsers, setCurrentPage, setCountTotalUsers, setIsLoading, setIsDisabled } from '../../redux/usersReducer';
 import Users from './Users';
 import * as axios from 'axios';
 import { Spinner } from 'react-bootstrap';
@@ -32,12 +32,14 @@ class UsersAPIComponent extends React.Component {
 
     render() {
         return <>
+        
             {this.props.usersPage.isLoading ? <Preloader /> : null}
             <Users
                 onPageChanged={this.onPageChanged}
                 usersPage={this.props.usersPage}
                 follow={this.props.follow}
                 unfollow={this.props.unfollow}
+                setIsDisabled={this.props.setIsDisabled}
             />
         </>
     }
@@ -76,6 +78,6 @@ const mapStateToProps = (state) => {
 
 
 const UsersContainer = connect(mapStateToProps,
-    { follow, unfollow, setUsers, setCurrentPage, setCountTotalUsers, setIsLoading })(UsersAPIComponent)
+    { follow, unfollow, setUsers, setCurrentPage, setCountTotalUsers, setIsLoading, setIsDisabled })(UsersAPIComponent)
 
 export default UsersContainer;
