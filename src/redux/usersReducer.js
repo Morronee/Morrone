@@ -1,3 +1,8 @@
+import {
+    usersAPI,
+    followedAPI
+} from './../api.js'
+
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET_USERS'
@@ -14,8 +19,6 @@ let initialState = {
     isLoading: true,
     isDisabled: []
 }
-
-
 
 const usersReducer = (state = initialState, action) => {
 
@@ -71,11 +74,10 @@ const usersReducer = (state = initialState, action) => {
                                 }
 
                                 case TOGGLE_IS_DISABLED:
-                                return { 
-                                        ...state, 
-                                        isDisabled: action.loading
-                                            ? [...state.isDisabled, action.userID]
-                                            : state.isDisabled.filter(id => id != action.userID)
+                                    return {
+                                        ...state,
+                                        isDisabled: action.loading ? [...state.isDisabled, action.userID] :
+                                            state.isDisabled.filter(id => id != action.userID)
                                     }
 
                                     default:
@@ -112,6 +114,42 @@ export const setIsDisabled = (loading, userID) => ({
     userID
 })
 
+export const getUsers = (currentPage, usersPage) => {
+    return (dispatch) => {
+        dispatch(setIsLoading(true))
+        dispatch(setCurrentPage(currentPage))
+        usersAPI.getUsers(currentPage, usersPage).then(response => {
+            dispatch(setIsLoading(false))
+            dispatch(setUsers(response.items))
+            dispatch(setCountTotalUsers(response.totalCount))
+        })
+    }
+}
 
+export const unfollowSuccess = (userID) => {
+    return (dispatch) => {
+        dispatch(setIsDisabled(true, userID))
+        followedAPI.unfollow(userID)
+            .then(response => {
+                if (response.resultCode === 0) {
+                    dispatch(unfollow(userID))
+                    dispatch(setIsDisabled(false, userID))
+                }
+            })
+    }
+}
+
+export const followSuccess = (userID) => {
+    return (dispatch) => {
+        dispatch(setIsDisabled(true, userID))
+        followedAPI.follow(userID)
+            .then(response => {
+                if (response.resultCode === 0) {
+                    dispatch(follow(userID))
+                    dispatch(setIsDisabled(false, userID))
+                }
+            })
+    }
+}
 
 export default usersReducer;

@@ -3,6 +3,7 @@ import dialogReducer from './dialogReducer';
 import profileReducer from './profileReducer';
 import usersReducer from './usersReducer';
 import authReducer from "./authReducer";
+import thunkMiddleware from 'redux-thunk'
 
 let reducers = combineReducers({
     dialogsPage: dialogReducer,
@@ -13,6 +14,6 @@ let reducers = combineReducers({
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-let store = createStore(reducers, composeEnhancers());
+let store = createStore(reducers,  applyMiddleware(thunkMiddleware) );
 
 export default store;

@@ -21,26 +21,10 @@ const User = (props) => {
 
                     {props.followed
                         ? <Button disabled={props.isDisabled.some(id => id === props.userID)} variant="primary" onClick={() => {
-                            props.setIsDisabled(true, props.userID)
-                            followedAPI.unfollow(props.userID)
-                                .then(response => {
-                                    if (response.resultCode === 0) {
-                                        props.unfollow(props.userID)
-                                        props.setIsDisabled(false, props.userID)
-                                    }
-                                })
+                            props.unfollow(props.userID)
                         }}>UNFOLLOW</Button>
                         : <Button disabled={props.isDisabled.some(id => id === props.userID)} variant="primary" onClick={() => { 
-                            props.setIsDisabled(true, props.userID)
-                           
-                            followedAPI.follow(props.userID)
-                            
-                                .then(response => {
-                                    if (response.resultCode === 0) {
-                                        props.follow(props.userID)
-                                        props.setIsDisabled(false, props.userID)
-                                    }
-                                })
+                            props.follow(props.userID)
                         }}>FOLLOW</Button>}
                 </Card.Body>
             </Card>
