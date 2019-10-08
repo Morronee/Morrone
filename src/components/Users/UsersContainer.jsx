@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { followSuccess, unfollowSuccess, setCountTotalUsers, setIsLoading, setIsDisabled, getUsers,  } from '../../redux/usersReducer';
 import Users from './Users';
-import Preloader from '../common/Preloader';
+import Preloader from '../common/Preloader'
+import {Redirect} from 'react-router-dom'
 
 
 
@@ -19,6 +20,8 @@ class UsersAPIComponent extends React.Component {
 
 
     render() {
+        if (!this.props.auth) return <Redirect to='/login' />
+
         return <>
         
             {this.props.usersPage.isLoading ? <Preloader /> : null}

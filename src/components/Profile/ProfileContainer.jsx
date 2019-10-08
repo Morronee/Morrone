@@ -4,6 +4,7 @@ import {setProfilesThunk} from './../../redux/profileReducer'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import {follow, unfollow} from './../../redux/usersReducer'
+import {Redirect} from 'react-router-dom'
 
 
 
@@ -15,7 +16,8 @@ class ProfileContainer extends React.Component {
     }
     
     render() {
-        debugger
+        if (!this.props.auth) return <Redirect to='/login' />
+
         return (
             <Profile {...this.props} profiles={this.props.profiles}
                 follow={this.props.follow}
@@ -25,7 +27,8 @@ class ProfileContainer extends React.Component {
 }
 
 let mapStateToProps = (state) => ({
-    profiles: state.profilePage.profiles
+    profiles: state.profilePage.profiles,
+    auth: state.auth.isAuth
 })
 
 let DataUrlConCom = withRouter(ProfileContainer)

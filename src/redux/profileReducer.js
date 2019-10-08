@@ -25,7 +25,6 @@ const profileReducer = (state = initialState, action) => {
 
     switch(action.type) {
         case ADD_POST : {
-            debugger;
             const addPostsId = state.profilePage.posts.length + 1
     
             let newPost = {
@@ -41,9 +40,7 @@ const profileReducer = (state = initialState, action) => {
         }
         
         case UPDATE_NEW_POST : {
-            debugger;
             let stateCopy = {...state};
-            console.log(typeof stateCopy.profilePage);
             stateCopy.profilePage.newPostText = action.newText;
             return stateCopy;
         }

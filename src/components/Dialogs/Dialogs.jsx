@@ -2,11 +2,10 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import Dialog from './Dialog/Dialog';
 import Message from './Message/Message';
-import { addMessageInStateActionCreate, addMessageInDialogActionCreate } from '../../redux/dialogReducer';
 import { InputGroup, Button, FormControl } from 'react-bootstrap'
+import {Redirect} from 'react-router-dom'
 
 const Dialogs = (props) => {
-debugger;
     let dialogsEl = props.dialogsPage.dialogsPage.dialogsData.map( d => <Dialog nickname={d.nickname} id={d.id} /> );
     let messageEl = props.dialogsPage.dialogsPage.messagesData.map( m => <Message nick={m.nick} textMessage={m.message} id={m.id} />);
     
@@ -23,8 +22,8 @@ debugger;
         textMessageElem.current.value = '';
         }
     }
+    if (!props.auth) return <Redirect to='/login' />
 
-        debugger;
         return (
             <div className={s.dialogs}>
                 <div className={s.dialogs_items}>
