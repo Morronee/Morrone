@@ -4,7 +4,7 @@ import { followSuccess, unfollowSuccess, setCountTotalUsers, setIsLoading, setIs
 import Users from './Users';
 import Preloader from '../common/Preloader'
 import {Redirect} from 'react-router-dom'
-
+import { WithAuthRedirect } from '../common/WithAuthRedirect';
 
 
 class UsersAPIComponent extends React.Component {
@@ -18,9 +18,7 @@ class UsersAPIComponent extends React.Component {
         this.props.getUsers(pageNumber, this.props.usersPage.pageSize)
     }
 
-
     render() {
-        if (!this.props.auth) return <Redirect to='/login' />
 
         return <>
         
@@ -43,7 +41,8 @@ const mapStateToProps = (state) => {
     }
 }
 
-const UsersContainer = connect(mapStateToProps,
-    { followSuccess, unfollowSuccess, setCountTotalUsers, setIsLoading, setIsDisabled, getUsers })(UsersAPIComponent)
+
+const UsersContainer = WithAuthRedirect(connect(mapStateToProps,
+    { followSuccess, unfollowSuccess, setCountTotalUsers, setIsLoading, setIsDisabled, getUsers })(UsersAPIComponent))
 
 export default UsersContainer;
