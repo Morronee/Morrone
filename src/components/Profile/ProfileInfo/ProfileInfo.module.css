@@ -46,3 +46,19 @@
 .followBlock {
     margin-left: 200px;
 }
+.status {
+    background-color: white;
+    border: 1px solid rgb(201, 201, 201);
+    border-radius: 15px;
+}
+.statusItem {
+    padding: 10px 15px 10px 15px;
+}
+
+.inputStatus {
+    border: none;
+    height: 20px;
+    width: 80%;
+    margin-left: 12px;
+
+}

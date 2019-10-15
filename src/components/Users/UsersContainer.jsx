@@ -5,6 +5,7 @@ import Users from './Users';
 import Preloader from '../common/Preloader'
 import {Redirect} from 'react-router-dom'
 import { WithAuthRedirect } from '../common/WithAuthRedirect';
+import { compose } from 'redux';
 
 
 class UsersAPIComponent extends React.Component {
@@ -42,7 +43,13 @@ const mapStateToProps = (state) => {
 }
 
 
-const UsersContainer = WithAuthRedirect(connect(mapStateToProps,
-    { followSuccess, unfollowSuccess, setCountTotalUsers, setIsLoading, setIsDisabled, getUsers })(UsersAPIComponent))
+// const UsersContainer = WithAuthRedirect(connect(mapStateToProps,
+//     { followSuccess, unfollowSuccess, setCountTotalUsers, setIsLoading, setIsDisabled, getUsers })(UsersAPIComponent))
 
-export default UsersContainer;
+// export default UsersContainer;
+
+export default compose(
+    connect(mapStateToProps,
+        { followSuccess, unfollowSuccess, setCountTotalUsers, setIsLoading, setIsDisabled, getUsers }),
+    // WithAuthRedirect
+)(UsersAPIComponent)
