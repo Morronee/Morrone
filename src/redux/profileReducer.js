@@ -3,6 +3,7 @@ import { profilesAPI } from './../api.js';
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST = 'UPDATE-NEW-POST';
 const SET_PROFILE = 'SET_PROFILE'
+const SET_STATUS = 'SET_STATUS'
 
 let initialState = {
     profilePage: {
@@ -14,8 +15,10 @@ let initialState = {
             { id: 5, message: 'Test props from state 2', nick: 'Log' }
         ],
         newPostText: ''
+        
     },
-    profiles: null 
+    profiles: null,
+    status: ''
 }
 
 
@@ -50,6 +53,13 @@ const profileReducer = (state = initialState, action) => {
                 ...state, profiles: action.profiles
             }
         }
+        
+        case SET_STATUS: {
+            return {
+                ...state, status: action.status
+            }
+        }
+        
 
         default :
             return state;
@@ -58,9 +68,9 @@ const profileReducer = (state = initialState, action) => {
 export const updateNewPostInStateActionCreate = (text) => ({ type: 'UPDATE-NEW-POST', newText: text })
 export const addPostInProfileCationCreate = () => ({ type: 'ADD-POST' })
 export const setProfiles = (profiles) => ({ type: SET_PROFILE, profiles })
+export const setStatus = (status) => ({ type: SET_STATUS, status })
 
-export const setProfilesThunk = (id) => {
-    return (dispatch) => {
+export const setProfilesThunk = (id) => (dispatch) => {
         let userId = id
         let myProfile = 1775
         if (!userId) {
@@ -71,7 +81,14 @@ export const setProfilesThunk = (id) => {
             dispatch(setProfiles(response))
         })
     }
-}
+
+export const setStatusThunk = (id) => (dispatch) => {
+        profilesAPI.getStatus(id).then(response => {
+            dispatch(setStatus(response)) }
+        )
+    }
+
+
 
 
 export default profileReducer;

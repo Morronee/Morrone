@@ -30,6 +30,7 @@ class UsersAPIComponent extends React.Component {
                 follow={this.props.followSuccess}
                 unfollow={this.props.unfollowSuccess}
                 setIsDisabled={this.props.setIsDisabled}
+                setStatus={this.props.setStatus}
 
             />
         </>

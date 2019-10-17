@@ -1,10 +1,9 @@
 import React from 'react';
 import s from './../ProfileInfo.module.css'
-import { InputGroup, FormControl, Button }  from 'react-bootstrap';
+import { profilesAPI } from '../../../../api';
 
 
 class StatusProfile extends React.Component {
-
 
     state = {
         editMode: false
@@ -26,8 +25,8 @@ class StatusProfile extends React.Component {
         return (
             <div className={s.status} >
                 {this.state.editMode 
-                    ? <div className={s.statusItem} onBlur={this.editStatusDisable}><b>Edit Status</b><input autoFocus={true} className={s.inputStatus} placeholder={d.lookingForAJobDescription}></input> </div> 
-                    : <div className={s.statusItem} onDoubleClick={this.editStatusActive}><b>Status</b> {d.lookingForAJobDescription}</div>} 
+                    ? <div className={s.statusItem} onBlur={this.editStatusDisable}><b>Edit Status</b><input autoFocus={true} className={s.inputStatus} placeholder={this.props.status}></input> </div> 
+                    : <div className={s.statusItem} onDoubleClick={this.editStatusActive}><b>Status</b> {this.props.status}</div>} 
             </div>
         )
     }

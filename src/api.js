@@ -26,10 +26,19 @@ export const profilesAPI = {
     setProfile(id) {
         return instance.get(`profile/${id}`)
         .then(response => response.data)
+    },
+    getStatus(id) {
+        return instance.get(`profile/status/${id}`)
+        .then(response => response.data)
+    },
+    upStatus(status) {
+        return instance.put(`profile/status/`, {status})
+        .then(response => response)
     }
 }
 export const authAPI = {
     authMe() {
-        return instance.get('auth/me').then(response => response)
+        return instance.get('auth/me')
+        .then(response => response)
     }
 }
