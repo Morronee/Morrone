@@ -23,7 +23,6 @@ const App = (props) => {
           <Route path='/profile/:userId?' render={() => 
             <ProfileContainer />}
               />
-
           <Route path='/login' 
             component={Login}/>
 

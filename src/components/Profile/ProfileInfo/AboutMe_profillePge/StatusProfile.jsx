@@ -1,12 +1,12 @@
 import React from 'react';
 import s from './../ProfileInfo.module.css'
-import { profilesAPI } from '../../../../api';
 
 
 class StatusProfile extends React.Component {
 
     state = {
-        editMode: false
+        editMode: false,
+        status: this.props.status
     }
 
     editStatusActive = () => {
@@ -18,6 +18,12 @@ class StatusProfile extends React.Component {
         this.setState({
             editMode: false
         })
+        this.props.setNewStatusThunk(this.state.status)
+    }
+    onStatusChange = (e) => {
+        this.setState(
+            {status: e.currentTarget.value}
+        )
     }
 
     render() {
@@ -25,7 +31,7 @@ class StatusProfile extends React.Component {
         return (
             <div className={s.status} >
                 {this.state.editMode 
-                    ? <div className={s.statusItem} onBlur={this.editStatusDisable}><b>Edit Status</b><input autoFocus={true} className={s.inputStatus} placeholder={this.props.status}></input> </div> 
+                    ? <div className={s.statusItem} onBlur={this.editStatusDisable}><b>Edit Status</b><input onChange={this.onStatusChange} autoFocus={true} className={s.inputStatus} placeholder={this.state.status}></input> </div> 
                     : <div className={s.statusItem} onDoubleClick={this.editStatusActive}><b>Status</b> {this.props.status}</div>} 
             </div>
         )

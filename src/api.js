@@ -33,7 +33,7 @@ export const profilesAPI = {
     },
     upStatus(status) {
         return instance.put(`profile/status/`, {status})
-        .then(response => response)
+        .then(response => response.data)
     }
 }
 export const authAPI = {

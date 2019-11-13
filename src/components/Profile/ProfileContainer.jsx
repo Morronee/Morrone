@@ -1,6 +1,6 @@
 import React from 'react';
 import Profile from './Profile';
-import {setProfilesThunk, setStatusThunk} from './../../redux/profileReducer'
+import {setProfilesThunk, setStatusThunk, setNewStatusThunk} from './../../redux/profileReducer'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import {follow, unfollow} from './../../redux/usersReducer'
@@ -12,12 +12,13 @@ import { compose } from 'redux';
 class ProfileContainer extends React.Component { 
     
     componentDidMount() {
-        this.props.setProfilesThunk(this.props.match.params.userId)
-        this.props.setStatusThunk(this.props.match.params.userId)
+        let userId = this.props.match.params.userId
+        this.props.setProfilesThunk(userId)
+        this.props.setStatusThunk(userId)
     }
     
     render() {
-       
+    
 
         return (
             <Profile {...this.props} profiles={this.props.profiles}
@@ -38,7 +39,6 @@ let mapStateToProps = (state) => ({
 // export default WithAuthRedirect(connect(mapStateToProps, {setProfilesThunk, follow, unfollow})(DataUrlConCom))
 
 export default compose(
-    connect(mapStateToProps, {setStatusThunk, setProfilesThunk, follow, unfollow}),
+    connect(mapStateToProps, {setStatusThunk,setNewStatusThunk, setProfilesThunk, follow, unfollow}),
     withRouter,
-    // WithAuthRedirect
     )(ProfileContainer)

@@ -11,7 +11,8 @@ const Profile = (props) => {
                 follow={props.follow}
                 unfollow={props.unfollow}
                 setStatus={props.setStatus}
-                status={props.status} />
+                status={props.status}
+                setNewStatusThunk={props.setNewStatusThunk} />
             <ContainerMyPosts />
         </div>
     )
