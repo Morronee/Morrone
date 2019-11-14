@@ -16,7 +16,6 @@ const SocialIcon = (props) => {
     }
 
     let p = props.contacts
-    debugger
     return (
         
                 <div className={s.socialBlock}>
