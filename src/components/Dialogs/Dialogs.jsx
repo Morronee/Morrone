@@ -4,13 +4,21 @@ import Dialog from './Dialog/Dialog';
 import Message from './Message/Message';
 import { InputGroup, Button, FormControl } from 'react-bootstrap'
 import {reduxForm, Field} from 'redux-form'
+import { required, maxLength } from '../../utils/validations/validators';
+import { Input } from '../common/FormsControls/FormsControl';
+
+const requiredLength = maxLength(10)
 
 const MessageForm = (props) => {
+
+        
+
     return (
         <form onSubmit={props.handleSubmit}>
             <InputGroup className="mb-3">
-                <Field name={'message'} component={'input'}
+                <Field name={'message'} component={Input}
                     placeholder="Write you message"
+                    validate={[required, requiredLength]}
                     // aria-label="Recipient's username"
                     // aria-describedby="basic-addon2"
                     // ref={textMessageElem}
@@ -33,25 +41,10 @@ const Dialogs = (props) => {
 
     const onSubmit = (formData) => {
         console.log(props)
-        props.messageText(formData.message)
-        props.sendMessage()
+        // props.messageText(formData.message)
+        props.sendMessage(formData.message)
     }
 
-
-
-    // let textMessageElem = React.createRef();
-
-    // let onMessageText = () => {
-    //     let textEl = textMessageElem.current.value;
-    //     props.messageText(textEl)
-    // }
-
-    // let onSendMessage = () => {
-    //     if (textMessageElem.current.value != '') {
-    //         props.sendMessage();
-    //         textMessageElem.current.value = '';
-    //     }
-    // }
 
 
 

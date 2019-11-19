@@ -28,29 +28,29 @@ const dialogReducer = (state = initialState, action) => {
         case ADD_MESSAGE_IN_DIALOG: {
             let newMessage = {
                 id: 123,
-                message: state.dialogsPage.newMessage,
+                message: action.text,
                 nick: 'Me',
                 author: 'Me'
             }
             let stateCopy = {...state}
             stateCopy.dialogsPage.messagesData = [...state.dialogsPage.messagesData]
             stateCopy.dialogsPage.messagesData.push(newMessage)
-            stateCopy.dialogsPage.newMessage = ''
+            // stateCopy.dialogsPage.newMessage = ''
             return stateCopy;
         }
 
-        case ADD_MESSAGE_IN_STATE: {
-            let stateCopy = {...state}
-            stateCopy.dialogsPage.newMessage = action.text
-            return stateCopy;
-        }
+        // case ADD_MESSAGE_IN_STATE: {
+        //     let stateCopy = {...state}
+        //     stateCopy.dialogsPage.newMessage = action.text
+        //     return stateCopy;
+        // }
         default:
             return state;
     }
     
 }
 export const addMessageInStateActionCreate = (textEl) => ({ type: 'ADD-MESSAGE-IN-STATE', text: textEl })
-export const addMessageInDialogActionCreate = () => ({ type: 'ADD-MESSAGE-IN-DIALOG' })
+export const addMessageInDialogActionCreate = (textEl) => ({ type: 'ADD-MESSAGE-IN-DIALOG', text: textEl })
 
 
 export default dialogReducer;

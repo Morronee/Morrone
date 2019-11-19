@@ -18,8 +18,8 @@ const mapDispatchToProps = (dispatch) => {
         messageText: (textEl) => {
             dispatch(addMessageInStateActionCreate(textEl))
         },
-        sendMessage: () => {
-            dispatch(addMessageInDialogActionCreate())
+        sendMessage: (textEl) => {
+            dispatch(addMessageInDialogActionCreate(textEl))
         }
     }
 }
