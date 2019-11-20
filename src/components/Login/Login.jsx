@@ -1,7 +1,10 @@
 import React from 'react'
 import { reduxForm, Field } from 'redux-form'
-import { authAPI } from '../../api';
 import { required } from '../../utils/validations/validators';
+import { Input } from '../common/FormsControls/FormsControl';
+import {connect} from 'react-redux'
+import {login} from '../../redux/authReducer'
+import {Redirect} from 'react-router-dom'
 
 
 
@@ -10,9 +13,9 @@ import { required } from '../../utils/validations/validators';
 const LoginForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
-            <div><Field name={'email'} component={'input'} placeholder={'Login'} type="login" validate={[required]} /></div>
-            <div><Field name={'password'} component={'input'} placeholder={'Password'} type="password" /></div>
-            <div><Field name={'rememberMe'} component={'input'} type={"checkbox"} /> Remember me</div>
+            <div><Field name={'email'} component={Input} placeholder={'Login'} type="login" validate={[required]} /></div>
+            <div><Field name={'password'} component={Input} placeholder={'Password'} type="password" validate={[required]}/></div>
+            <div><Field name={'rememberMe'} component={Input} type={"checkbox"} /> Remember me</div>
             <div><button>Login</button></div>
         </form>
     )
@@ -26,9 +29,12 @@ const Login = (props) => {
         // Тут происходит обработка и совершение действий 
         // с данными полученными из формы
 
-        authAPI.login(formData)
-        authAPI.authMe()
+        props.login(formData.email, formData.password, formData.rememberMe)
     }
+    if (props.isAuth) {
+        return <Redirect to='/profile'/>
+    }
+
 
     return (
         <div>
@@ -40,4 +46,8 @@ const Login = (props) => {
     )
 }
 
-export default Login
+const maStateToProps = (state) => ({
+    isAuth: state.auth.isAuth
+})
+
+export default connect(maStateToProps, {login}) (Login)

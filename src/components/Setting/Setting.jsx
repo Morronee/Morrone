@@ -1,4 +1,5 @@
 import React from 'react';
+import { WithAuthRedirect } from '../common/WithAuthRedirect';
 // import s from './Setting.module.css';
 
 const Setting = () => {
@@ -7,4 +8,4 @@ const Setting = () => {
     )
 }
 
-export default Setting;
+export default (WithAuthRedirect(Setting));

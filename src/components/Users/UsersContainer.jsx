@@ -52,5 +52,5 @@ const mapStateToProps = (state) => {
 export default compose(
     connect(mapStateToProps,
         { followSuccess, unfollowSuccess, setCountTotalUsers, setIsLoading, setIsDisabled, getUsers }),
-    // WithAuthRedirect
+    WithAuthRedirect
 )(UsersAPIComponent)

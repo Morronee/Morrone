@@ -3,27 +3,19 @@ import s from './Dialogs.module.css';
 import Dialog from './Dialog/Dialog';
 import Message from './Message/Message';
 import { InputGroup, Button, FormControl } from 'react-bootstrap'
-import {reduxForm, Field} from 'redux-form'
+import { reduxForm, Field } from 'redux-form'
 import { required, maxLength } from '../../utils/validations/validators';
 import { Input } from '../common/FormsControls/FormsControl';
 
 const requiredLength = maxLength(10)
 
 const MessageForm = (props) => {
-
-        
-
     return (
         <form onSubmit={props.handleSubmit}>
             <InputGroup className="mb-3">
                 <Field name={'message'} component={Input}
                     placeholder="Write you message"
                     validate={[required, requiredLength]}
-                    // aria-label="Recipient's username"
-                    // aria-describedby="basic-addon2"
-                    // ref={textMessageElem}
-                    // onChange={onMessageText}
-                    // value={props.dialogsPage.dialogsPage.newMessage}
                 />
                 <InputGroup.Append>
                     <button>SEND</button>
@@ -33,7 +25,7 @@ const MessageForm = (props) => {
     )
 }
 
-const ReduxMessageForm = reduxForm({form: 'dialogs'})(MessageForm)
+const ReduxMessageForm = reduxForm({ form: 'dialogs' })(MessageForm)
 
 const Dialogs = (props) => {
     let dialogsEl = props.dialogsPage.dialogsPage.dialogsData.map(d => <Dialog nickname={d.nickname} id={d.id} />);
