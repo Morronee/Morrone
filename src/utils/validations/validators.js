@@ -7,7 +7,7 @@ export const required = value => {
         // и нам позволят совершить onSubmit
     
         return 'Field is required'
-        // В противном случае onSubmit выполнится, а в meta.error,
+        // В противном случае onSubmit не выполнится, а в meta.error,
         // запишется текст который мы передадим. 
     }
 

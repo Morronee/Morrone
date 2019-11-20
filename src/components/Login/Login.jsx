@@ -5,6 +5,7 @@ import { Input } from '../common/FormsControls/FormsControl';
 import {connect} from 'react-redux'
 import {login} from '../../redux/authReducer'
 import {Redirect} from 'react-router-dom'
+import style from '../common/FormsControls/FormsControl.module.css'
 
 
 
@@ -16,6 +17,9 @@ const LoginForm = (props) => {
             <div><Field name={'email'} component={Input} placeholder={'Login'} type="login" validate={[required]} /></div>
             <div><Field name={'password'} component={Input} placeholder={'Password'} type="password" validate={[required]}/></div>
             <div><Field name={'rememberMe'} component={Input} type={"checkbox"} /> Remember me</div>
+            { props.error && <div className={style.errorSummaryLogin}>
+                {props.error}
+            </div>}
             <div><button>Login</button></div>
         </form>
     )
@@ -39,6 +43,7 @@ const Login = (props) => {
     return (
         <div>
             <h1>Login</h1>
+            
 
             {/* Тут мы отображаем нашу форму и передаем в нее обработку  */}
             <ReduxLoginForm onSubmit={onSubmit} />

@@ -4,3 +4,6 @@
 .formControl.error span {
     color: red;
 }
+.errorSummaryLogin {
+    color: red;
+}
