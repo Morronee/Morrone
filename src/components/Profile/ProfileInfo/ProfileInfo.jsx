@@ -34,6 +34,7 @@ const ProfileInfo = (props) => {
 
             </div>
             <div className={s.aboutMe}>
+                
                 <StatusProfile {...props}/>
             </div>
         </div>

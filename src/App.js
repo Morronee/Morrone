@@ -10,10 +10,18 @@ import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import HeaderContainer from './components/Header/HeaderContainer'
 import Login from './components/Login/Login';
+import { connect } from 'react-redux';
+import {meThunk} from '../src/redux/authReducer'
 
 
 
-const App = (props) => {
+class App extends React.Component  {
+
+  componentDidMount() {
+    this.props.meThunk()
+  }
+  
+  render(){
   return (
       <div className='app-wrapper'>
         <HeaderContainer />
@@ -28,8 +36,8 @@ const App = (props) => {
 
           <Route path='/dialogs' render={() => 
             <ContainerDialogs 
-              store={props.store}
-              dispatch={props.dispatch}/>}
+            
+              />}
             />
 
           <Route path='/news' 
@@ -44,8 +52,8 @@ const App = (props) => {
         </div>
       </div>
     
-  );
+  );}
 };
 
-export default App;
+export default connect(null, {meThunk} )(App);
 

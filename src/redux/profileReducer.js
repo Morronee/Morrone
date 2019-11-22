@@ -84,15 +84,17 @@ export const setProfilesThunk = (id) => (dispatch) => {
 
 export const setStatusThunk = (id) => (dispatch) => {
         profilesAPI.getStatus(id).then(response => {
+            console.log('get - ' + response)
             dispatch(setStatus(response)) }
         )
     }
 export const setNewStatusThunk = (status) => (dispatch) => {
     profilesAPI.upStatus(status).then(response => {
-        if (response.data.resultCode === 0) {
-        dispatch(setStatus(response.data))
-        }
-    })
+        // if (response.data.resultCode === 0) {
+            console.log('UP - ' + status)
+        dispatch(setStatus(status))
+})
+    // })
 }
 
 

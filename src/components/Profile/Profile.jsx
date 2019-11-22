@@ -12,7 +12,8 @@ const Profile = (props) => {
                 unfollow={props.unfollow}
                 setStatus={props.setStatus}
                 status={props.status}
-                setNewStatusThunk={props.setNewStatusThunk} />
+                setNewStatusThunk={props.setNewStatusThunk}
+                setStatusThunk={props.setStatusThunk} />
             <ContainerMyPosts />
         </div>
     )
