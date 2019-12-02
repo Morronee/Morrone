@@ -5,13 +5,15 @@ import usersReducer from './usersReducer';
 import authReducer from "./authReducer";
 import thunkMiddleware from 'redux-thunk';
 import { reducer as formReducer } from 'redux-form'
+import appReducer from "./app-reducer";
 
 let reducers = combineReducers({
     dialogsPage: dialogReducer,
     profilePage: profileReducer,
     usersPage: usersReducer,
     auth: authReducer,
-    form: formReducer
+    form: formReducer,
+    app: appReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

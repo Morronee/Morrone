@@ -40,7 +40,7 @@ export const setUserData = (id, login, email, isAuth) => ({
 
 export const meThunk = () => {
     return (dispatch) => {
-        authAPI.authMe()
+       return authAPI.authMe()
             .then(response => {
                 if (response.data.resultCode === 0) {
                     let {

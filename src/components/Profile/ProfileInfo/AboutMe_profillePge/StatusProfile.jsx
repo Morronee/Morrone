@@ -21,7 +21,8 @@ class StatusProfile extends React.Component {
         status: this.props.status
     }
     componentDidMount() {
-        this.props.setStatusThunk(1775)
+        this.props.setStatusThunk(this.props.authorizedUserId)
+        console.log('status')
     }
     
 
@@ -35,7 +36,7 @@ class StatusProfile extends React.Component {
             editMode: false
         })
         this.props.setNewStatusThunk(this.state.status)
-        this.props.setStatusThunk(1775)
+        this.props.setStatusThunk(this.props.authorizedUserId)
         
     }
     onStatusChange = (e) => {

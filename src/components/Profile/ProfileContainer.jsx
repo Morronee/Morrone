@@ -5,6 +5,7 @@ import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import {follow, unfollow} from './../../redux/usersReducer'
 import { compose } from 'redux';
+import { getStatus, getProfiles, getAuth, getAuthorizedUserId } from '../../redux/selectorReducer';
 
 
 
@@ -13,13 +14,18 @@ class ProfileContainer extends React.Component {
     
     componentDidMount() {
         let userId = this.props.match.params.userId
+        
         if (!userId) {
             userId = this.props.authorizedUserId
+            if(!userId) {
+                this.props.history.push('/login')
+            }
         }
-
-
+        
+        
         this.props.setProfilesThunk(userId)
         this.props.setStatusThunk(userId)
+        
     }
     
     render() {
@@ -34,10 +40,15 @@ class ProfileContainer extends React.Component {
 }
 
 let mapStateToProps = (state) => ({
-    profiles: state.profilePage.profiles,
-    status: state.profilePage.status,
-    auth: state.auth.isAuth,
-    authorizedUserId: state.auth.id
+    // profiles: state.profilePage.profiles,
+    // status: state.profilePage.status,
+    // auth: state.auth.isAuth,
+    // authorizedUserId: state.auth.id
+
+    profiles: getProfiles(state),
+    status: getStatus(state),
+    auth: getAuth(state),
+    authorizedUserId: getAuthorizedUserId(state)
 })
 
 // let DataUrlConCom = withRouter(ProfileContainer)
