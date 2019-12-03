@@ -3,7 +3,7 @@ import s from './ProfileInfo.module.css'
 import Preloader from '../../common/Preloader';
 import { Image, Card, Button } from 'react-bootstrap'
 import SocialIcon from './CocialButton/SocialIcon';
-import StatusProfile from './AboutMe_profillePge/StatusProfile';
+import StatusProfileHook from './AboutMe_profillePge/StatusProfileHook';
 
 
 const ProfileInfo = (props) => {
@@ -35,7 +35,7 @@ const ProfileInfo = (props) => {
             </div>
             <div className={s.aboutMe}>
                 
-                <StatusProfile {...props}/>
+                <StatusProfileHook {...props}/>
             </div>
         </div>
     )

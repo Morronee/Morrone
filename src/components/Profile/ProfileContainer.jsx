@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import {follow, unfollow} from './../../redux/usersReducer'
 import { compose } from 'redux';
-import { getStatus, getProfiles, getAuth, getAuthorizedUserId } from '../../redux/selectorReducer';
+import { getStatus, getProfiles, getAuth, getAuthorizedUserId, getProfilesSuperSelector } from '../../redux/selectorReducer';
 
 
 
