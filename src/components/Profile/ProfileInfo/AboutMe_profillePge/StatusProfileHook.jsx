@@ -27,7 +27,7 @@ const StatusProfileHook = (props) => {
 
     const deactivationEditMode = () => {
         setEditMode(false)
-        // props.setNewStatusThunk(status)
+        props.setNewStatusThunk(status)
     }
 
     const onChangeStatus = (formData) => {
@@ -46,4 +46,3 @@ const StatusProfileHook = (props) => {
     }
 export default StatusProfileHook;
 
-{/* <input onChange={this.onStatusChange} autoFocus={true} className={s.inputStatus} placeholder={this.state.status}></input> */}

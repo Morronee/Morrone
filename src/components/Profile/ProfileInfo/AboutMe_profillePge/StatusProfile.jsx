@@ -31,14 +31,15 @@ class StatusProfile extends React.Component {
             editMode: true
         })
     }
+    
     editStatusDisable = () => {
         this.setState({
             editMode: false
         })
         this.props.setNewStatusThunk(this.state.status)
         this.props.setStatusThunk(this.props.authorizedUserId)
-        
     }
+
     onStatusChange = (e) => {
         this.setState(
             {status: e.currentTarget.value}
