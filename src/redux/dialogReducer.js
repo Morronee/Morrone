@@ -1,5 +1,5 @@
 const ADD_MESSAGE_IN_DIALOG = 'ADD-MESSAGE-IN-DIALOG';
-const ADD_MESSAGE_IN_STATE = 'ADD-MESSAGE-IN-STATE';
+const DELETE_POST = 'DELETE_POST'
 
 let initialState = {
     dialogsPage: {
@@ -38,6 +38,12 @@ const dialogReducer = (state = initialState, action) => {
             // stateCopy.dialogsPage.newMessage = ''
             return stateCopy;
         }
+        case DELETE_POST: {
+            let stateCopy = {...state}
+            stateCopy.dialogsPage.messagesData = [...state.dialogsPage.messagesData.filter(m => m.id != action.messageId)]
+            return stateCopy
+            // {...state.dialogsPage, messagesData: state.dialogsPage.messagesData.filter(m => m.id != action.messageId)}
+        }
 
         // case ADD_MESSAGE_IN_STATE: {
         //     let stateCopy = {...state}
@@ -51,6 +57,7 @@ const dialogReducer = (state = initialState, action) => {
 }
 export const addMessageInStateActionCreate = (textEl) => ({ type: 'ADD-MESSAGE-IN-STATE', text: textEl })
 export const addMessageInDialogActionCreate = (textEl) => ({ type: 'ADD-MESSAGE-IN-DIALOG', text: textEl })
+export const deleteMessage = (messageId) => ({type: DELETE_POST, messageId})
 
 
 export default dialogReducer;

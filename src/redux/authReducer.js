@@ -38,10 +38,8 @@ export const setUserData = (id, login, email, isAuth) => ({
     }
 })
 
-export const meThunk = () => {
-    return (dispatch) => {
-       return authAPI.authMe()
-            .then(response => {
+export const meThunk = () => async (dispatch) => {
+       let response = await authAPI.authMe()
                 if (response.data.resultCode === 0) {
                     let {
                         id,
@@ -50,27 +48,21 @@ export const meThunk = () => {
                     } = response.data.data
                     dispatch(setUserData(id, login, email, true))
                 }
-            })
     }
-}
-export const login = (email, password, rememberMe) => (dispatch) => {
-        authAPI.login(email, password, rememberMe)
-            .then(response => {
+export const login = (email, password, rememberMe) => async (dispatch) => {
+        let response = await authAPI.login(email, password, rememberMe)
                 if (response.data.resultCode === 0) {
                     dispatch(meThunk()) 
                 } else {
                     dispatch(stopSubmit('login', {_error: response.data.messages[0]}))
                 }
-            })
     }
 
-export const logout = () => (dispatch) => {
-        authAPI.logout()
-            .then(response => {
+export const logout = () => async (dispatch) => {
+        let response = await authAPI.logout()
                 if (response.data.resultCode === 0) {
                     dispatch(setUserData(null, null, null, false)) 
                 }
-            })
     }
 
 

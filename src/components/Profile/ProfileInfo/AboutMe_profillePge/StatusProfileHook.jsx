@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import s from './../ProfileInfo.module.css'
 import {reduxForm, Field} from 'redux-form'
 import {Input} from '../../../common/FormsControls/FormsControl'
@@ -16,11 +16,15 @@ const StatusForm = (props) => {
 const ReduxStatusForm = reduxForm({form: 'status'})(StatusForm)
 
 
-const StatusProfileHook = (props) => {
+const StatusProfileHook = React.memo(props => {
 
     let [editMode, setEditMode] = useState(false)
     let [status, setStatus] = useState(props.status)
-    
+
+    useEffect( () => {
+        setStatus(props.status)
+    }, [props.status])
+
     const activateEditMode = () => {
         setEditMode(true)
     }
@@ -34,7 +38,7 @@ const StatusProfileHook = (props) => {
         setStatus(formData.status)
     }
 
-
+    console.log('render status')
 
         return (
             <div className={s.status} >
@@ -43,6 +47,6 @@ const StatusProfileHook = (props) => {
                     : <div className={s.statusItem} onDoubleClick={activateEditMode}><b>Status</b> {props.status}</div>} 
             </div>
         )
-    }
+    })
 export default StatusProfileHook;
 
