@@ -2,6 +2,7 @@ import React from 'react';
 import s from './Users.module.css';
 import User from './User/User';
 import { CardGroup, Pagination } from 'react-bootstrap';
+import Paginator from "./Paginator";
 
 
 let Users = (props) => {
@@ -20,12 +21,6 @@ let Users = (props) => {
             setIsDisabled={props.setIsDisabled}
             isDisabled={props.usersPage.isDisabled} />)
 
-    let pagesCount = Math.ceil(props.usersPage.totalUsersCount / props.usersPage.pageSize)
-
-    let pages = []
-    for (let i = 1; i <= pagesCount; i++) {
-        pages.push(i)
-    }
 
     return (
         <div>
@@ -33,9 +28,7 @@ let Users = (props) => {
             <div>
             </div>
             <div className={s.pegi}>
-                <Pagination>
-                        {pages.map(p => <Pagination.Item onClick={(e) => { props.onPageChanged(p) }} active={props.usersPage.currentPage === p && true}>{p}</Pagination.Item>)}
-                </Pagination>
+                <Paginator totalUsersCount={props.usersPage.totalUsersCount} pageSize={props.usersPage.pageSize} currentPage={props.usersPage.currentPage} onPageChanged={props.onPageChanged}/>
             </div>
             <CardGroup>
                 {userElem}
