@@ -1,8 +1,8 @@
 import React from 'react';
-import s from './Post.module.css';
+import s from './../../Profile_Style/Profile_Messages_Wall/Profile_Message_Wall_Item.module.css';
 import { Badge, Card } from 'react-bootstrap';
 
-const Post = (props) => {
+const ProfileMessageItem = (props) => {
     return (
 
         <div className={s.posts}>
@@ -20,4 +20,4 @@ const Post = (props) => {
     )
 }
 
-export default Post;
+export default ProfileMessageItem;

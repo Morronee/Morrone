@@ -59,13 +59,7 @@ class App extends React.Component  {
           <Route path='/music' 
             component={Music}/>
 
-          <Route path='/users' render={() => {
-              return (
-
-                    <UsersContainer />
-
-
-              )}} />
+          <Route path='/users' render={LazyLoad(UsersContainer)}/>
 
           <Route path='/setting' 
             component={Setting}/>

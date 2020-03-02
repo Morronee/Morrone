@@ -4,6 +4,7 @@ const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST = 'UPDATE-NEW-POST';
 const SET_PROFILE = 'SET_PROFILE'
 const SET_STATUS = 'SET_STATUS'
+const SET_PHOTO = 'SET_PHOTO'
 
 let initialState = {
     profilePage: {
@@ -59,6 +60,11 @@ const profileReducer = (state = initialState, action) => {
                 ...state, status: action.status
             }
         }
+        case SET_PHOTO: {
+            return {
+                ...state, ...state.profilePage, ...state.profilePage.profiles, photos: action.file
+            }
+        }
         
 
         default :
@@ -69,6 +75,7 @@ export const updateNewPostInStateActionCreate = (text) => ({ type: 'UPDATE-NEW-P
 export const addPostInProfileCationCreate = () => ({ type: 'ADD-POST' })
 export const setProfiles = (profiles) => ({ type: SET_PROFILE, profiles })
 export const setStatus = (status) => ({ type: SET_STATUS, status })
+export const setPhoto = (file) => ({ type: SET_PHOTO, file })
 
 export const setProfilesThunk = (id) => async (dispatch) => {
         let userId = id
@@ -91,6 +98,14 @@ export const setNewStatusThunk = (status) => async (dispatch) => {
         // if (response.data.resultCode === 0) {
             console.log('UP - ' + status)
         dispatch(setStatus(status))
+}
+
+debugger
+export const savePhotoOnServer = (file) => async (dispatch) => {
+    let response = await profilesAPI.savePhoto(file)
+        dispatch(setPhoto(response.data.data.photos))
+    console.log(response.data.data.photos)
+
 }
 
 

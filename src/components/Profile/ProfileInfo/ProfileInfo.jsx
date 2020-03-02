@@ -1,43 +1,34 @@
 import React from 'react';
 import s from './ProfileInfo.module.css'
 import Preloader from '../../common/Preloader';
-import { Image, Card, Button } from 'react-bootstrap'
 import SocialIcon from './CocialButton/SocialIcon';
 import StatusProfileHook from './AboutMe_profillePge/StatusProfileHook';
+import ProfileInfoBackground from "./Profile_Info_Background";
+import ProfileInfoAvatar from "./Profile_Info_Avatar";
+import ProfileInformationHook from "./ProfileInformation/ProfileOnformayionHook";
 
 
-const ProfileInfo = (props) => {
+
+const ProfileInfo =  React.memo(function ProfileInfo (props)  {
 
     if (!props.profiles) {
         return <Preloader />
     }
-    let d = props.profiles
 
-    let defaultUserAvatar = 'https://icon-library.net/images/windows-8-user-icon/windows-8-user-icon-10.jpg'
     return (
-
         <div className={s.profileInfo}>
-            <img className={s.profileInfo_bg_img} src="https://miro.medium.com/max/3200/0*cGDKbUrA_8vJC4d3" alt="" />
+            <ProfileInfoBackground />
             <div className={s.descriptionBlock}>
-                <div className={s.avatarUser}>
-                    <Image src={d.photos.large != null ? d.photos.large : defaultUserAvatar} roundedCircle />
-                </div>
-                <div className={s.blockFullName}><h1>{d.fullName}</h1></div>
-                <div className={s.followBlock}>
-                    {props.followed ? <Button variant="primary" onClick={() => { props.follow(props.profiles.userId) }}>UNFOLLOW</Button>
-                        : <Button variant="primary" onClick={() => { props.unfollow(props.profiles.userId) }}>FOLLOW</Button>}
-                </div>
-                
-                <div className={s.profileStatus}></div>
-
+                <ProfileInfoAvatar uploadAvatar={props.profiles.photos.large}
+                                   savePhotoOnServer={props.savePhotoOnServer}/>
                 <SocialIcon {...props.profiles} />
-
             </div>
-            <div className={s.aboutMe}>
-                
-                <StatusProfileHook {...props}/>
-            </div>
+            <StatusProfileHook {...props}/>
+            <ProfileInformationHook lookingForAJob={props.profiles.lookingForAJob}
+                                    aboutMe={props.profiles.aboutMe}/>
         </div>
+
+
     )
-}
-export default ProfileInfo;
+})
+export default ProfileInfo

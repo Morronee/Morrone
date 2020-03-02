@@ -1,6 +1,6 @@
 import React from 'react';
 import Profile from './Profile';
-import {setProfilesThunk, setStatusThunk, setNewStatusThunk, setStatus} from './../../redux/profileReducer'
+import {setProfilesThunk, setStatusThunk, setNewStatusThunk, setStatus, savePhotoOnServer} from './../../redux/profileReducer'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import {follow, unfollow} from './../../redux/usersReducer'
@@ -33,8 +33,9 @@ class ProfileContainer extends React.Component {
 
         return (
             <Profile {...this.props} profiles={this.props.profiles}
-                follow={this.props.follow}
-                unfollow={this.props.unfollow}/>
+                 follow={this.props.follow}
+                 unfollow={this.props.unfollow}
+                 savePhotoOnServe={this.props.savePhotoOnServer}/>
         )
     }
 }
@@ -56,6 +57,6 @@ let mapStateToProps = (state) => ({
 // export default WithAuthRedirect(connect(mapStateToProps, {setProfilesThunk, follow, unfollow})(DataUrlConCom))
 
 export default compose(
-    connect(mapStateToProps, {setStatusThunk,setNewStatusThunk, setProfilesThunk, follow, unfollow, setStatus}),
+    connect(mapStateToProps, {setStatusThunk,setNewStatusThunk, setProfilesThunk, follow, unfollow, setStatus, savePhotoOnServer}),
     withRouter,
     )(ProfileContainer)

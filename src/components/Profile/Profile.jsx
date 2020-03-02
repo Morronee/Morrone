@@ -1,10 +1,9 @@
 import React from 'react';
 import s from './Profile.module.css'
 import ProfileInfo from './ProfileInfo/ProfileInfo';
-import ContainerMyPosts from './MyPosts/MyPostsContainer';
+import ProfileMessagesContainer from './Profile_Message_Wall/Profile_Messages_Container.jsx';
 
 const Profile = (props) => {
-
     return (
         <div className={s.content}>
             <ProfileInfo profiles={props.profiles}
@@ -13,8 +12,9 @@ const Profile = (props) => {
                 setStatus={props.setStatus}
                 status={props.status}
                 setNewStatusThunk={props.setNewStatusThunk}
-                setStatusThunk={props.setStatusThunk} />
-            <ContainerMyPosts />
+                setStatusThunk={props.setStatusThunk}
+                 savePhotoOnServer={props.savePhotoOnServer}/>
+            <ProfileMessagesContainer />
         </div>
     )
 }
